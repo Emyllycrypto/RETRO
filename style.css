@@ -1,0 +1,2193 @@
+.desktop {
+    display: none;
+}
+
+
+#login {
+
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #111;
+
+    z-index: 9999;
+
+}
+
+
+.caixaLogin {
+
+    background: #222;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+}
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Pixelify Sans", sans-serif;
+
+}
+
+body {
+
+    height: 100vh;
+
+
+    background-size: cover;
+
+    overflow: hidden;
+
+    background: url("imagens/fotos/fundo.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    image-rendering: pixelated;
+
+    image-rendering: crisp-edges;
+}
+
+/* Desktop */
+
+.desktop {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    padding: 20px;
+
+}
+
+/* Ícones */
+
+.icone {
+
+    width: 90px;
+    text-align: center;
+
+    cursor: pointer;
+
+    color: white;
+
+    text-shadow: 2px 2px black;
+
+    position: absolute;
+
+    user-select: none;
+
+    transition: .15s;
+
+}
+
+.icone img {
+
+    width: 60px;
+
+    pointer-events: none;
+
+}
+
+.icone span {
+
+    pointer-events: none;
+
+}
+
+.icone:hover {
+
+    background: rgba(255, 255, 255, .2);
+
+    border-radius: 8px;
+
+}
+
+/* Barra */
+
+.barra {
+
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 45px;
+
+    background: #c0c0c0;
+
+    border-top: 2px solid white;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 4px;
+
+    gap: 5px;
+
+    z-index: 9999;
+
+}
+
+/* Botão iniciar */
+
+.iniciar {
+
+    width: 110px;
+
+    height: 35px;
+
+    font-weight: bold;
+
+    background: #c0c0c0;
+
+    border-top: 2px solid white;
+
+    border-left: 2px solid white;
+
+    border-right: 2px solid #444;
+
+    border-bottom: 2px solid #444;
+
+    cursor: pointer;
+
+}
+
+/* Relógio */
+
+.relogio {
+
+    min-width: 90px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #d4d0c8;
+
+    border: 2px inset white;
+
+    font-weight: bold;
+
+}
+
+/* Janela */
+
+
+/* Topo */
+.topo {
+
+    height: 30px;
+
+    background: linear-gradient(to right, #000080, #1084d0);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 8px;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: move;
+
+}
+
+.topo button {
+
+    width: 35px;
+
+    height: 28px;
+
+    cursor: pointer;
+
+}
+
+.conteudo {
+
+    padding: 20px;
+
+    height: calc(100% - 40px);
+
+    overflow: auto;
+
+}
+
+textarea {
+
+    width: 100%;
+
+    height: 100%;
+
+    resize: none;
+
+    font-size: 16px;
+
+    padding: 10px;
+
+}
+
+/* MENU INICIAR */
+
+.menu-iniciar {
+
+    position: fixed;
+
+    bottom: 45px;
+    left: 0;
+
+    width: 220px;
+
+    background: #d4d0c8;
+
+    border: 2px solid #444;
+
+    display: none;
+
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .4);
+
+}
+
+.menu-iniciar .titulo {
+
+    background: #1d65d8;
+
+    color: white;
+
+    padding: 10px;
+
+    font-weight: bold;
+
+}
+
+.menu-iniciar button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    background: none;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    font-size: 16px;
+
+}
+
+.menu-iniciar button:hover {
+
+    background: #1d65d8;
+
+    color: white;
+
+}
+
+/* BOTÕES DOS PROGRAMAS */
+
+.programas {
+
+    display: flex;
+
+    gap: 5px;
+
+    flex: 1;
+
+    overflow-x: auto;
+
+}
+
+.programa {
+
+    background: #ddd;
+
+    padding: 8px 12px;
+
+    border: 2px outset white;
+
+    font-size: 14px;
+
+}
+
+/* ABRIR JANELA */
+
+.janela {
+
+    position: absolute;
+
+    top: 90px;
+
+    left: 180px;
+
+    width: 450px;
+
+    height: 320px;
+
+    background: white;
+
+    border: 3px solid #444;
+
+    display: none;
+
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, .4);
+
+    animation: abrir .2s;
+
+}
+
+@keyframes abrir {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+.botoes {
+
+    display: flex;
+
+    gap: 4px;
+
+}
+
+.botoes button {
+
+    width: 22px;
+
+    height: 22px;
+
+    background: #c0c0c0;
+
+    border-top: 2px solid white;
+
+    border-left: 2px solid white;
+
+    border-right: 2px solid #444;
+
+    border-bottom: 2px solid #444;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    padding: 0;
+
+}
+
+.botoes button:active {
+
+    border-top: 2px solid #444;
+
+    border-left: 2px solid #444;
+
+    border-right: 2px solid white;
+
+    border-bottom: 2px solid white;
+
+}
+
+.topo {
+
+    cursor: move;
+
+    user-select: none;
+
+}
+
+.maximizada {
+
+    top: 0 !important;
+
+    left: 0 !important;
+
+    width: 100% !important;
+
+    height: calc(100% - 45px) !important;
+
+}
+
+.minimizada {
+
+    display: none !important;
+
+}
+
+/* EXPLORADOR */
+
+.explorer {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+
+    gap: 15px;
+
+}
+
+.item {
+
+    height: 80px;
+
+    border: 1px solid transparent;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+}
+
+.item:hover {
+
+    background: #0a64ad33;
+
+    border: 1px solid #0a64ad;
+
+}
+
+.arquivo {
+
+    color: #444;
+
+}
+
+.pasta {
+
+    font-size: 45px;
+
+    cursor: pointer;
+
+}
+
+.pasta span {
+
+    display: block;
+
+    font-size: 14px;
+
+    margin-top: 8px;
+
+}
+
+/* ====================== */
+/* EXPLORADOR WINDOWS */
+/* ====================== */
+
+.explorer-window {
+
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%;
+
+    padding: 0;
+
+}
+
+.barra-explorer {
+
+    height: 40px;
+
+    background: #d4d0c8;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 5px;
+
+    border-bottom: 2px solid #999;
+
+}
+
+.barra-explorer button {
+
+    width: 32px;
+
+    height: 28px;
+
+    cursor: pointer;
+
+}
+
+.barra-explorer input {
+
+    flex: 1;
+
+    height: 28px;
+
+    padding: 5px;
+
+}
+
+.explorer-body {
+
+    display: flex;
+
+    flex: 1;
+
+}
+
+.lateral {
+
+    width: 170px;
+
+    background: #efefef;
+
+    border-right: 2px solid #aaa;
+
+    padding: 10px;
+
+    overflow: auto;
+
+}
+
+.arquivos-area {
+
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, 120px);
+
+    gap: 15px;
+
+    padding: 15px;
+
+    align-content: start;
+
+}
+
+.status {
+
+    height: 28px;
+
+    background: #ddd;
+
+    border-top: 2px solid #999;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 10px;
+
+    font-size: 14px;
+
+}
+
+/* MENU DE CONTEXTO */
+
+.menu-contexto {
+
+    position: absolute;
+
+    display: none;
+
+    width: 220px;
+
+    background: #d4d0c8;
+
+    border: 2px solid #555;
+
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, .4);
+
+    z-index: 999999;
+
+}
+
+.menu-contexto button {
+    width: 100%;
+
+    padding: 10px;
+
+    border: none;
+
+    background: none;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    font-size: 15px;
+
+}
+
+.menu-contexto button:hover {
+
+    background: #0a64ad;
+
+    color: white;
+
+}
+
+.menu-contexto hr {
+
+    border: none;
+
+    border-top: 1px solid #999;
+
+}
+
+/* BOOT */
+
+#boot {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: black;
+
+    color: #00ff66;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    z-index: 99999999;
+
+    font-family: "Pixelify Sans", sans-serif;
+
+}
+
+.barraBoot {
+
+    margin-top: 25px;
+
+    width: 300px;
+
+    height: 18px;
+
+    border: 2px solid #00ff66;
+
+}
+
+.progressoBoot {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #00ff66;
+
+    animation: boot 3s linear forwards;
+
+}
+
+@keyframes boot {
+
+    to {
+
+        width: 100%;
+
+    }
+
+}
+
+/* MENU WINDOWS 98 */
+
+.menu-iniciar {
+
+    position: fixed;
+
+    left: 0;
+
+    bottom: 40px;
+
+    width: 260px;
+
+    height: 420px;
+
+    background: #c0c0c0;
+
+    border: 2px solid #555;
+
+    display: none;
+
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, .4);
+
+    z-index: 99999;
+
+}
+
+.lado {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 38px;
+
+    height: 100%;
+
+    background: linear-gradient(#000080, #1084d0);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+}
+
+.lado span {
+
+    color: white;
+
+    font-weight: bold;
+
+    writing-mode: vertical-rl;
+
+    transform: rotate(180deg);
+
+    margin-bottom: 15px;
+
+    font-size: 20px;
+
+}
+
+.menu-conteudo {
+
+    margin-left: 38px;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.menu-conteudo button {
+
+    height: 42px;
+
+    border: none;
+
+    background: none;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    padding-left: 15px;
+
+    font-size: 16px;
+
+}
+
+.menu-conteudo button:hover {
+
+    background: #0a64ad;
+
+    color: white;
+
+}
+
+.menu-conteudo hr {
+
+    margin: 5px 0;
+
+}
+
+.player {
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%;
+
+}
+
+.album {
+
+    display: flex;
+
+    justify-content: center;
+    font-size: 10px;
+
+}
+
+.album img {
+
+    width: 90px;
+
+    height: 90px;
+
+    border: 4px solid #888;
+
+    object-fit: cover;
+
+}
+
+.infoMusica {
+
+    text-align: center;
+
+    margin: 8px 0;
+
+}
+
+#musica {
+
+    width: 350px;
+
+    height: 530px;
+
+}
+
+#barra {
+
+    width: 100%;
+
+}
+
+.tempo {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 5px;
+
+    font-size: 14px;
+
+}
+
+.controles {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 12px 0;
+
+}
+
+.controles button {
+
+    width: 35px;
+
+    height: 35px;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+}
+
+.playlist {
+
+    width: 100%;
+
+    height: 120px;
+
+    margin-top: 5px;
+
+    border: 1px solid #777;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    background: white;
+
+}
+
+.itemPlaylist {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    font-size: 15px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+#tituloMusica {
+
+    font-size: 15px;
+    /* diminua este valor */
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+.itemPlaylist:hover {
+
+    background: #1b63c6;
+
+    color: white;
+
+}
+
+.itemPlaylist:hover {
+
+    background: #0a64ad;
+
+    color: white;
+
+}
+
+.volume {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 10px;
+
+}
+
+#volume {
+
+    width: 180px;
+
+    cursor: pointer;
+
+}
+
+#favorito {
+
+    margin: 10px 0;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    width: 100%;
+
+}
+
+.tocando {
+
+    background: #0a64ad;
+
+    color: white;
+
+    font-weight: bold;
+
+}
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(rgba(255, 255, 255, .03) 50%,
+            rgba(0, 0, 0, .05) 50%);
+
+    background-size: 100% 4px;
+
+    z-index: 999999;
+
+}
+
+/* =========================
+   CALCULADORA RETRO
+========================= */
+
+
+#calculadora {
+
+    width: 320px;
+
+    height: 430px;
+
+}
+
+
+#visor {
+
+    width: 100%;
+
+    height: 50px;
+
+    font-size: 25px;
+
+    text-align: right;
+
+    padding: 10px;
+
+    background: #111;
+
+    color: #00ff66;
+
+    border: 3px inset #777;
+
+    margin-bottom: 15px;
+
+}
+
+
+.calcBotoes {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 8px;
+
+}
+
+
+.calcBotoes button {
+
+    height: 55px;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+
+    background: #c0c0c0;
+
+
+    border-top: 3px solid white;
+
+    border-left: 3px solid white;
+
+    border-right: 3px solid #555;
+
+    border-bottom: 3px solid #555;
+
+}
+
+
+.calcBotoes button:active {
+
+
+    border-top: 3px solid #555;
+
+    border-left: 3px solid #555;
+
+    border-right: 3px solid white;
+
+    border-bottom: 3px solid white;
+
+
+}
+
+
+.calcBotoes .igual {
+
+    grid-row: span 2;
+
+}
+
+
+.calcBotoes .zero {
+
+    grid-column: span 2;
+
+}
+
+.janela {
+
+
+    transform-origin: center;
+
+
+}
+
+
+.janela:not(.maximizada) {
+
+
+    animation: abrirJanela .18s;
+
+
+}
+
+
+@keyframes abrirJanela {
+
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.8);
+
+    }
+
+
+    to {
+
+
+        opacity: 1;
+
+        transform: scale(1);
+
+
+    }
+
+
+}
+
+/* ======================
+   NAVEGADOR RETRO
+====================== */
+
+
+#internet {
+
+    width: 650px;
+
+    height: 450px;
+
+
+}
+
+
+
+.navegador {
+
+    padding: 0;
+
+    background: #fff;
+
+
+}
+
+
+
+.barraWeb {
+
+
+    height: 45px;
+
+    background: #c0c0c0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px;
+
+
+}
+
+
+
+.barraWeb input {
+
+
+    flex: 1;
+
+    height: 30px;
+
+
+}
+
+
+
+.barraWeb button {
+
+
+    height: 30px;
+
+    cursor: pointer;
+
+
+}
+
+
+
+#pagina {
+
+
+    padding: 25px;
+
+    font-family: "Pixelify Sans", sans-serif;
+
+
+}
+
+
+#pagina h1 {
+
+
+    color: #000080;
+
+
+}
+
+/* ======================
+VISUALIZADOR IMAGENS
+====================== */
+
+
+#imagens {
+
+    width: 600px;
+
+    height: 420px;
+
+}
+
+
+
+.visualizador {
+
+    padding: 0;
+
+    background: #c0c0c0;
+
+}
+
+
+
+.barraImagem {
+
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 5px;
+
+    background: #d4d0c8;
+
+
+}
+
+
+
+#galeria {
+
+
+    display: flex;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    flex-wrap: wrap;
+
+
+}
+
+
+
+#galeria img {
+
+
+    width: 100px;
+
+    height: 100px;
+
+    object-fit: cover;
+
+    border: 3px inset white;
+
+    cursor: pointer;
+
+
+}
+
+
+
+#galeria img:hover {
+
+
+    transform: scale(1.05);
+
+
+}
+
+
+
+#imagemGrande {
+
+
+    position: absolute;
+
+    display: none;
+
+    inset: 30px;
+
+    background: white;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 999;
+
+
+}
+
+
+
+#fotoAberta {
+
+
+    max-width: 80%;
+
+    max-height: 80%;
+
+}
+
+.pixelify-sans {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+.favoritos {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+
+.favoritos button {
+
+    padding: 12px;
+
+    cursor: pointer;
+
+    background: #c0c0c0;
+
+    border: 2px outset white;
+
+    text-align: left;
+
+    font-size: 15px;
+
+}
+
+
+.favoritos button:hover {
+
+    background: #000080;
+
+    color: white;
+
+}
+
+/* =========================
+   SNAKE GAME
+========================= */
+
+
+#snake {
+
+    width: 480px;
+
+    height: 550px;
+
+}
+
+
+.snake-area {
+
+    text-align: center;
+
+}
+
+
+#jogoSnake {
+
+    background: black;
+
+    border: 5px inset #888;
+
+}
+
+
+.snake-area button {
+
+    margin-top: 10px;
+
+    padding: 10px 20px;
+
+    cursor: pointer;
+
+}
+
+.paint-area {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+.ferramentas {
+
+    background: #c0c0c0;
+
+    padding: 10px;
+
+    border: 3px inset white;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+}
+
+
+
+#canvasPaint {
+
+    background: white;
+
+    border: 4px inset gray;
+
+    cursor: crosshair;
+
+}
+
+#paint {
+
+
+    width: 480px;
+
+    height: 550px;
+}
+
+#canvasPaint {
+
+    background: white;
+
+    border: 8px solid black;
+
+    cursor: crosshair;
+
+    margin-top: 20px;
+
+}
+
+/* cursor diferente dentro das janelas */
+.janela,
+.janela * {
+    cursor: pointer;
+}
+
+
+/* cursor normal para textos */
+.janela input,
+.janela textarea {
+    cursor: text;
+}
+
+
+/* cursor especial dentro do navegador */
+#internet,
+#internet * {
+    cursor: crosshair;
+}
+
+body {
+    cursor: url("imagens/fotos/cursor2.png"), auto;
+}
+
+/* cursor retrô animado */
+body {
+    cursor: url("imagens/fotos/cursor2.png"), auto;
+}
+
+
+/* animação quando clicar */
+body.clicando {
+    animation: cursorClick 0.2s ease;
+}
+
+
+@keyframes cursorClick {
+
+    0% {
+        cursor: url("imagens/fotos/cursor2.png"), auto;
+    }
+
+    50% {
+        cursor: url("imagens/fotos/cursor2.png"), auto;
+    }
+
+    100% {
+        cursor: url("imagens/fotos/cursor2.png"), auto;
+    }
+
+}
+
+/* =========================
+CURSOR WINDOWS 98 RETRÔ
+========================= */
+
+* {
+    cursor: url("imagens/fotos/cursor2.png"), auto;
+}
+
+
+/* quando passa em botões e pastas */
+button,
+img,
+canvas,
+a,
+.icone,
+.pasta,
+.arquivo,
+.janela,
+.topo,
+.conteudo,
+.player,
+.paint-area,
+.snake-area,
+.ferramentas,
+#pagina {
+
+    cursor: url("imagens/fotos/cursor2.png"), auto;
+
+}
+
+
+/* campos de texto continuam normais */
+input,
+textarea {
+
+    cursor: text;
+
+}
+
+/* =========================
+LOGIN RETRO
+========================= */
+
+#login {
+
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    background: #111;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 9999;
+
+    font-family: "Pixelify Sans";
+
+}
+
+
+
+.caixaLogin {
+
+
+    background: #c0c0c0;
+
+    border: 4px solid white;
+
+    box-shadow: 5px 5px #555;
+
+    padding: 30px;
+
+    width: 350px;
+
+    text-align: center;
+
+
+}
+
+
+
+.caixaLogin input {
+
+
+    display: block;
+
+    width: 90%;
+
+    margin: 10px auto;
+
+    padding: 10px;
+
+    font-family: "Pixelify Sans";
+
+
+}
+
+
+
+.caixaLogin button {
+
+
+    padding: 10px 30px;
+
+    cursor: pointer;
+
+}
+
+
+
+#erroLogin {
+
+
+    color: red;
+
+}
+
+/* =========================
+TELA DESLIGAMENTO
+========================= */
+
+
+.telaDesligando {
+
+
+    width: 100vw;
+
+    height: 100vh;
+
+    background: black;
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: "Pixelify Sans";
+
+
+}
+
+
+
+.carregando {
+
+
+    margin-top: 30px;
+
+    font-size: 25px;
+
+    animation: piscando 1s infinite;
+
+
+}
+
+
+
+.computadorDesligado {
+
+
+    width: 100vw;
+
+    height: 100vh;
+
+    background: black;
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    font-family: "Pixelify Sans";
+
+
+}
+
+
+
+@keyframes piscando {
+
+
+    50% {
+
+        opacity: 0.3;
+
+    }
+
+
+}
+
+/* BOTAO POWER */
+
+.computadorDesligado button {
+
+
+    margin-top: 20px;
+
+    padding: 15px 35px;
+
+    font-family: "Pixelify Sans";
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+
+}
+
+
+
+.computadorDesligado button:hover {
+
+
+    transform: scale(1.1);
+
+
+}
+
+#tabuleiro {
+
+    display: grid;
+
+    grid-template-columns: repeat(8, 40px);
+
+    grid-template-rows: repeat(8, 40px);
+
+    gap: 3px;
+
+    margin: 20px auto;
+
+}
+
+
+.blocoCampo {
+
+    width: 40px;
+
+    height: 40px;
+
+    background: #888;
+
+    border: 3px outset #ccc;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+
+.blocoCampo:hover {
+
+
+    background: #ddd;
+
+
+}
+
+
+.blocoCampo.aberto {
+
+    background: #ddd;
+
+    border: 2px inset #aaa;
+
+}
+
+
+
+.explodiu {
+
+
+    animation: explodir .4s infinite;
+
+
+}
+
+
+
+@keyframes explodir {
+
+
+    50% {
+
+        transform: scale(1.2);
+
+    }
+
+
+}
+
+
+
+.vitoria {
+
+
+    animation: vitoria .8s infinite;
+
+
+}
+
+
+@keyframes vitoria {
+
+
+    50% {
+
+        transform: rotate(3deg);
+
+    }
+
+
+}
+
+#campo {
+    width: 420px;
+    height: 500px;
+    z-index: 100;
+}
+
+.campo-area {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.placarCampo {
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+
+}
+
+.tetris-area {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    height: 100%;
+
+}
+
+
+#jogoTetris {
+
+    background: black;
+
+    border: 5px solid #555;
+
+    image-rendering: pixelated;
+
+}
+
+
+#pontosTetris {
+
+    font-size: 18px;
+
+    margin: 10px;
+
+}
+
+#tetris {
+
+    display: none;
+
+}
+
+/* =========================
+EFEITOS DESKTOP
+========================= */
+
+
+#efeitos {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+
+}
+
+
+
+/* ESTRELAS */
+
+
+.estrela {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    animation: piscar 2s infinite;
+
+}
+
+
+@keyframes piscar {
+
+
+    50% {
+
+        opacity: .2;
+
+    }
+
+
+}
+
+
+
+
+/* CHUVA PIXEL */
+
+
+.pixel {
+
+    position: absolute;
+
+    width: 4px;
+
+    height: 12px;
+
+    background: #00ffff;
+
+    animation: cair linear infinite;
+
+}
+
+
+
+@keyframes cair {
+
+
+    from {
+
+        transform: translateY(-20px);
+
+    }
+
+
+    to {
+
+        transform: translateY(100vh);
+
+    }
+
+
+}
+
+
+
+
+/* NEVE */
+
+
+.neve {
+
+    position: absolute;
+
+    color: white;
+
+    font-size: 20px;
+
+    animation: nevar linear infinite;
+
+}
+
+
+
+@keyframes nevar {
+
+
+    from {
+
+        transform: translateY(-20px);
+
+    }
+
+
+    to {
+
+        transform: translateY(100vh);
+
+    }
+
+
+}
+
+
+
+
+
+/* RELÓGIO RETRO */
+
+
+.relogio {
+
+
+    font-family: 'Pixelify Sans';
+
+    font-size: 22px;
+
+    color: #00ff99;
+
+    background: #111;
+
+    padding: 8px 15px;
+
+    border: 3px solid #00ff99;
+
+    box-shadow:
+
+        0 0 10px #00ff99;
+
+
+    text-shadow:
+
+        0 0 8px #00ff99;
+
+
+}
